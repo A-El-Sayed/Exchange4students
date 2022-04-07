@@ -1,4 +1,6 @@
 export type MainStackParamList = {
+	EnteringScreen: undefined;
+	Register: undefined;
 	Home: undefined;
 	Buttons: undefined;
 	Colors: undefined;

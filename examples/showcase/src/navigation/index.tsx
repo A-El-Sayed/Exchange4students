@@ -8,6 +8,8 @@ import Forms from "../screens/Forms";
 import Typography from "../screens/Typography";
 import Section from "../screens/Section";
 import Avatar from "../screens/Avatar";
+import EnteringScreen from "../screens/EnteringScreen";
+import Register from "../screens/Register";
 
 const MainStack = createStackNavigator();
 const Main = () => {
@@ -28,11 +30,13 @@ const Main = () => {
   return (
     <NavigationContainer linking={linking}>
       <MainStack.Navigator
-        initialRouteName="Home"
+        initialRouteName="any"
         screenOptions={{
           headerShown: false,
         }}
       >
+        <MainStack.Screen name="EnteringScreen" component={EnteringScreen} />
+        <MainStack.Screen name="Register" component={Register} />
         <MainStack.Screen name="Home" component={Home} />
         <MainStack.Screen name="Typography" component={Typography} />
         <MainStack.Screen name="Buttons" component={Buttons} />
