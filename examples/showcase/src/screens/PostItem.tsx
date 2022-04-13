@@ -17,6 +17,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
+import { addProduct } from "../services/firebase";
 
 export default function ({
   navigation,
@@ -29,9 +30,9 @@ export default function ({
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [RadioToggle, setRadioToggle] = React.useState<boolean>(false);
   const [itemName,setName] = React.useState<string>("")
-  const [price,setPrice] = React.useState<string>("")
-  const [category,setCategory] = React.useState<string>("")
-  const [description, setDescription] = React.useState<string>("");
+  const [Price,setPrice] = React.useState<string>("")
+  const [Category,setCategory] = React.useState<string>("")
+  const [Description, setDescription] = React.useState<string>("");
   // const [photo, setPhoto] = React.useState([]) is for pictures used either for the profile or when posting an item, but thats for another time lol.
 
 
@@ -72,8 +73,26 @@ export default function ({
 
               <TextInput
                 placeholder="Enter the category of the item"
-                value={category}
+                value={Category}
                 onChangeText={(val) => setCategory(val)}
+                rightContent={
+                  <Ionicons
+                    name="text"
+                    size={20}
+                    color={themeColor.gray300}
+                  />
+                }
+              />
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>
+                  Description:
+              </Text>
+
+              <TextInput
+                placeholder="Enter the description of the item"
+                value={Description}
+                onChangeText={(val) => setDescription(val)}
                 rightContent={
                   <Ionicons
                     name="text"
@@ -90,7 +109,7 @@ export default function ({
 
               <TextInput
                 placeholder="Enter the price"
-                value={price}
+                value={Price}
                 onChangeText={(val) => setPrice(val)}
                 rightContent={
                   <Ionicons
@@ -116,8 +135,12 @@ export default function ({
               type="TouchableOpacity"
               // onPress={() => navigation.navigate("Home")}
               onPressIn={async () => {
-
+                let result = await addProduct(itemName, Category,Description,Price);
+                if (result === 'success') {
+                  navigation.navigate("Home");
+                  
               } } 
+            }
             />
           </SectionContent>
         </Section>

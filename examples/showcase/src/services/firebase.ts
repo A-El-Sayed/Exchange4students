@@ -91,6 +91,22 @@ const addNewUser = async (fullName: string, email: string) => {
   }
 };
 
+export const addProduct = async (itemName : string, category: string, description: string, price: string) => {
+    try{
+        const productData = {
+            item_Name: itemName,
+            Category: category,
+            Description: description,
+            Price: price,
+        }
+        const docRef = await addDoc(collection(firestore, "products"), productData);
+        console.log(docRef.id);
+        return "success";
+    } catch (e) {
+        console.log(e);
+      }
+}
+
 export const getFullName = async () => {
   try {
     let fullName = "Temp";
