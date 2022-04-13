@@ -62,7 +62,7 @@ export default function ({
 
       {/* this is the code for the buttons under the bar at the top*/}
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate("Typography")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Typography")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Typography</Text>
             <Ionicons
@@ -81,7 +81,7 @@ export default function ({
               color={isDarkmode ? themeColor.white : themeColor.black}
             />
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.navigate("ViewCart")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">View Cart</Text>
@@ -92,7 +92,7 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Buttons")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Buttons")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Buttons</Text>
             <Ionicons
@@ -111,7 +111,7 @@ export default function ({
               color={isDarkmode ? themeColor.white : themeColor.black}
             />
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.navigate("Section")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Browse Products</Text>
