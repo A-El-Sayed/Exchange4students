@@ -12,6 +12,7 @@ import EnteringScreen from "../screens/EnteringScreen";
 import Register from "../screens/Register";
 import ViewPage from "../screens/ViewPage";
 import ViewCart from "../screens/ViewCart"
+import PostItem from "../screens/PostItem"
 
 const MainStack = createStackNavigator();
 const Main = () => {
@@ -48,6 +49,7 @@ const Main = () => {
         <MainStack.Screen name="Avatar" component={Avatar} />
         <MainStack.Screen name="ViewPage" component={ViewPage} />
         <MainStack.Screen name="ViewCart" component={ViewCart} />
+        <MainStack.Screen name="PostItem" component={PostItem} />
       </MainStack.Navigator>
     </NavigationContainer>
   );

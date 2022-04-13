@@ -11,4 +11,5 @@ export type MainStackParamList = {
 	Avatar: undefined;
 	ViewPage: undefined;
 	ViewCart: undefined;
+	PostItem: undefined;
 };

@@ -17,12 +17,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
-import { logInWithEmail, getFullName } from "../services/firebase";
-import Home from "./Home";
 
 export default function ({
   navigation,
-}: StackScreenProps<MainStackParamList, "EnteringScreen">) {
+}: StackScreenProps<MainStackParamList, "PostItem">) {
   const { isDarkmode, setTheme } = useTheme();
   const [text, setText] = React.useState<string>("");
   const [pass, setPass] = React.useState<string>("");
@@ -30,66 +28,73 @@ export default function ({
   const [value, setValue] = React.useState<string | null>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [RadioToggle, setRadioToggle] = React.useState<boolean>(false);
+  const [itemName,setName] = React.useState<string>("")
+  const [price,setPrice] = React.useState<string>("")
+  const [category,setCategory] = React.useState<string>("")
+  const [description, setDescription] = React.useState<string>("");
   // const [photo, setPhoto] = React.useState([]) is for pictures used either for the profile or when posting an item, but thats for another time lol.
 
 
   return (
     <Layout>
       <TopNav
-        // leftContent={
-        //   <Ionicons
-        //     name="chevron-back"
-        //     size={20}
-        //     color={isDarkmode ? themeColor.white : themeColor.black}
-        //   />
-        // }
-        // leftAction={() => navigation.goBack()}
-        middleContent="Welcome to Exchange4Students"
-        rightContent={
+        leftContent={
           <Ionicons
-            name={isDarkmode ? "sunny" : "moon"}
+            name="chevron-back"
             size={20}
-            color={isDarkmode ? themeColor.white100 : themeColor.dark}
+            color={isDarkmode ? themeColor.white : themeColor.black}
           />
         }
-        rightAction={() => {
-          if (isDarkmode) {
-            setTheme("light");
-          } else {
-            setTheme("dark");
-          }
-        }}
+        leftAction={() => navigation.goBack()}
+        middleContent="Post Item"
       />
       <ScrollView>
       <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
           <SectionContent>
           <View style={{ marginBottom: 20}}>
-              <Text style={{textAlign:"center",fontSize:30}}>Login</Text>
               <Text style={{ marginBottom: 10 }}>
-                Email
+                Name of Item
               </Text>
 
               <TextInput
-                placeholder="Enter your email"
-                value={email}
-                onChangeText={(val) => setEmail(val)}
+                placeholder="Enter the name of the item"
+                value={itemName}
+                onChangeText={(val) => setName(val)}
                 rightContent={
-                  <Ionicons name="mail" size={20} color={themeColor.gray300} />
+                  <Ionicons name="text" size={20} color={themeColor.gray300} />
                 }
               />
             </View>
             <View style={{ marginBottom: 20 }}>
               <Text style={{ marginBottom: 10 }}>
-                Password:
+                  Category:
               </Text>
 
-              <TextInput secureTextEntry = {true}
-                placeholder="Enter your password"
-                value={pass}
-                onChangeText={(val) => setPass(val)}
+              <TextInput
+                placeholder="Enter the category of the item"
+                value={category}
+                onChangeText={(val) => setCategory(val)}
                 rightContent={
                   <Ionicons
-                    name="lock-closed"
+                    name="text"
+                    size={20}
+                    color={themeColor.gray300}
+                  />
+                }
+              />
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>
+                  Price:
+              </Text>
+
+              <TextInput
+                placeholder="Enter the price"
+                value={price}
+                onChangeText={(val) => setPrice(val)}
+                rightContent={
+                  <Ionicons
+                    name="calculator"
                     size={20}
                     color={themeColor.gray300}
                   />
@@ -98,7 +103,7 @@ export default function ({
             </View>
             <Button
               style={{ marginTop: 10 }}
-              text="Continue"
+              text="Post"
               rightContent={
                 <Ionicons
                   name="arrow-forward"
@@ -111,35 +116,12 @@ export default function ({
               type="TouchableOpacity"
               // onPress={() => navigation.navigate("Home")}
               onPressIn={async () => {
-                let result = await logInWithEmail(email, pass);
-                if (result === 'success') {
-                  navigation.navigate("Home");
-                }
 
               } } 
             />
           </SectionContent>
         </Section>
         
-        {/* going to Register */}
-        <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
-          <SectionContent>
-          <Text style={{textAlign:"center"}}>Don't have an account?</Text>
-            <View>
-              <View style={{ alignContent: "center" }}>
-
-                <Button
-                  style={{ marginTop: 10, marginRight: 10 }}
-                  text="Register"
-                  status="primary"
-                  size="md"
-                  outline
-                  onPress={() => navigation.navigate("Register")}
-                />
-              </View>
-            </View>
-          </SectionContent>
-        </Section>
       </ScrollView>
     </Layout>
   );
