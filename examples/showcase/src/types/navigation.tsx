@@ -9,4 +9,6 @@ export type MainStackParamList = {
 	Nice: undefined;
 	Section: undefined;
 	Avatar: undefined;
+	ViewPage: undefined;
+	ViewCart: undefined;
 };

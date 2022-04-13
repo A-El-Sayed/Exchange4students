@@ -23,7 +23,7 @@ import { getFullName } from "../services/firebase";
 export default function ({
   navigation,
   route
-}: StackScreenProps<MainStackParamList, "Avatar">) {
+}: StackScreenProps<MainStackParamList, "ViewPage">) {
   const { isDarkmode, setTheme } = useTheme();
   return (
     <Layout>
@@ -63,7 +63,7 @@ export default function ({
                 justifyContent: "space-evenly",
               }}
             >
-              <Text style={{fontSize:25}}>route.p</Text>
+              <Text style={{fontSize:25}}>User's Full Name</Text>
               <Profile source={require("../../assets/people.jpg")} size="xl" />
             </View>
             <Text style={{marginTop:20 ,marginBottom:10, textAlign:"center", fontSize:13}}>Student at Stevens Institute of Technology</Text>

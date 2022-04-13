@@ -17,6 +17,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
+import { getFullName, signUpWithEmail } from '../services/firebase';
 import Home from "./Home";
 
 export default function ({
@@ -121,7 +122,13 @@ export default function ({
               }
               status="primary"
               type="TouchableOpacity"
-              onPress={() => navigation.navigate("Home")}
+              onPress ={async () => {
+                let result = await signUpWithEmail(text, email, pass);
+                if (result === 'success') {
+                  let fullName = await getFullName();
+                  navigation.navigate("Home");
+                }
+              }}
             />
           </SectionContent>
         </Section>

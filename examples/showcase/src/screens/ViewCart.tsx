@@ -18,7 +18,7 @@ import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/s
 
 export default function ({
   navigation,
-}: StackScreenProps<MainStackParamList, "Section">) {
+}: StackScreenProps<MainStackParamList, "ViewCart">) {
   const { isDarkmode, setTheme } = useTheme();
   return (
     <Layout>
@@ -31,21 +31,16 @@ export default function ({
           />
         }
         leftAction={() => navigation.goBack()}
-        middleContent="Browse"
-        // rightContent={
-        //   <Ionicons
-        //     name={isDarkmode ? "sunny" : "moon"}
-        //     size={20}
-        //     color={isDarkmode ? themeColor.white100 : themeColor.dark}
-        //   />
-        // }
-        // rightAction={() => {
-        //   if (isDarkmode) {
-        //     setTheme("light");
-        //   } else {
-        //     setTheme("dark");
-        //   }
-        // }}
+        middleContent="Cart"
+        rightContent={
+          <Ionicons
+            name="cart"
+            size={20}
+            color={isDarkmode ? themeColor.white100 : themeColor.dark}
+          />
+        }
+        rightAction={() => {
+        }}
       />
       <ScrollView>
         <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
@@ -67,24 +62,7 @@ export default function ({
           </SectionContent>
         </Section>
 
-        <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
-          <SectionImage source={require("../../assets/blue.jpg")} />
-          <SectionContent>
-          <Text fontWeight="medium">Data Structures and Algorithm</Text>
-          <Text> </Text>
-          <Text fontWeight="medium" >$15.99</Text>
-          <View style={{ flexDirection: "row" }}>
-                <Button
-                  style={{ marginTop: 20, marginRight: 10 }}
-                  text="Click to learn more"
-                  status="primary"
-                  size="md"
-                  outline
-                />
-                
-              </View>
-          </SectionContent>
-        </Section>
+    
       </ScrollView>
     </Layout>
   );

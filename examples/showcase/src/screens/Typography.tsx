@@ -13,13 +13,13 @@ export default function ({
   return (
     <Layout>
       <TopNav
-        leftContent={
-          <Ionicons
-            name="chevron-back"
-            size={20}
-            color={isDarkmode ? themeColor.white : themeColor.black}
-          />
-        }
+      leftContent={
+              <Ionicons
+                name="chevron-back"
+                size={20}
+                color={isDarkmode ? themeColor.white : themeColor.black}
+              />
+            }
         leftAction={() => navigation.goBack()}
         middleContent="Typography"
         rightContent={

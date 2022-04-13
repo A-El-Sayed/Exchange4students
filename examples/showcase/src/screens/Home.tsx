@@ -10,6 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
+
 import { MainStackParamList } from "../types/navigation";
 
 export default function ({
@@ -34,14 +35,14 @@ export default function ({
     <Layout>
       {/* Navigation at the top */}
       <TopNav
-             leftContent={
-              <Ionicons
-                name="chevron-back"
-                size={20}
-                color={isDarkmode ? themeColor.white : themeColor.black}
-              />
-            }
-        leftAction={() => navigation.goBack()}
+        //      leftContent={
+        //       <Ionicons
+        //         name="chevron-back"
+        //         size={20}
+        //         color={isDarkmode ? themeColor.white : themeColor.black}
+        //       />
+        //     }
+        // leftAction={() => navigation.goBack()}
         middleContent="Welcome to Exchange4Students"
         rightContent={
           <Ionicons
@@ -74,6 +75,16 @@ export default function ({
         <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Colors</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={isDarkmode ? themeColor.white : themeColor.black}
+            />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("ViewCart")}>
+          <View style={styles.listItem}>
+            <Text fontWeight="medium">View Cart</Text>
             <Ionicons
               name="chevron-forward"
               size={20}

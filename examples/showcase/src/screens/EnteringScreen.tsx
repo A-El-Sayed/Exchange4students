@@ -17,6 +17,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
+import { logInWithEmail, getFullName } from "../services/firebase";
 import Home from "./Home";
 
 export default function ({
@@ -29,6 +30,7 @@ export default function ({
   const [value, setValue] = React.useState<string | null>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [RadioToggle, setRadioToggle] = React.useState<boolean>(false);
+  // const [photo, setPhoto] = React.useState([]) is for pictures used either for the profile or when posting an item, but thats for another time lol.
 
 
   return (
@@ -103,10 +105,17 @@ export default function ({
                   size={20}
                   color={themeColor.white}
                 />
+                
               }
               status="primary"
               type="TouchableOpacity"
-              onPress={() => navigation.navigate("Home")}
+              // onPress={() => navigation.navigate("Home")}
+              onPressIn={async () => {
+                let result = await logInWithEmail(email, pass);
+                if (result === 'success') {
+                  navigation.navigate("Home");
+                }
+              } } 
             />
           </SectionContent>
         </Section>

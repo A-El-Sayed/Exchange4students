@@ -10,6 +10,8 @@ import Section from "../screens/Section";
 import Avatar from "../screens/Avatar";
 import EnteringScreen from "../screens/EnteringScreen";
 import Register from "../screens/Register";
+import ViewPage from "../screens/ViewPage";
+import ViewCart from "../screens/ViewCart"
 
 const MainStack = createStackNavigator();
 const Main = () => {
@@ -44,6 +46,8 @@ const Main = () => {
         <MainStack.Screen name="Forms" component={Forms} />
         <MainStack.Screen name="Section" component={Section} />
         <MainStack.Screen name="Avatar" component={Avatar} />
+        <MainStack.Screen name="ViewPage" component={ViewPage} />
+        <MainStack.Screen name="ViewCart" component={ViewCart} />
       </MainStack.Navigator>
     </NavigationContainer>
   );
