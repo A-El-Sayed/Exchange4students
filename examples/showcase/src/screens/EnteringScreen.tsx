@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, Alert } from "react-native";
 import {
   Layout,
   TopNav,
@@ -109,13 +109,14 @@ export default function ({
               }
               status="primary"
               type="TouchableOpacity"
-              // onPress={() => navigation.navigate("Home")}
               onPressIn={async () => {
                 let result = await logInWithEmail(email, pass);
                 if (result === 'success') {
                   navigation.navigate("Home");
                 }
-
+                else{
+                  alert('Incorrect Login info');
+                }
               } } 
             />
           </SectionContent>

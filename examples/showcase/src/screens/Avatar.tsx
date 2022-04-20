@@ -18,6 +18,7 @@ import Profile from "react-native-rapi-ui/components/Avatar/Avatar";
 import ColorCard from "../components/ColorCard";
 import { RotateInUpLeft } from "react-native-reanimated";
 import { getFullName } from "../services/firebase";
+import Constants from "expo-constants";
 
 
 export default function ({

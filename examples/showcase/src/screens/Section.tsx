@@ -14,6 +14,7 @@ import {
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
 import { Ionicons } from "@expo/vector-icons";
+import {Searchbar} from "react-native-paper"
 import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets";
 
 export default function ({
