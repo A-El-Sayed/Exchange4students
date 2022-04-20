@@ -3,3 +3,4 @@ import { themeColor } from './constants/colors';
 export * from './provider/ThemeProvider'
 export * from './components';
 export { useCachedResources, themeColor };
+
