@@ -4,6 +4,8 @@ import * as Font from 'expo-font';
 
 import { Asset } from 'expo-asset';
 
+
+
 export default function useCachedResources(
 	images?: Array<any> | null,
 	fonts?: any

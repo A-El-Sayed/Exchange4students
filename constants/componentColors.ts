@@ -1,5 +1,7 @@
 import themeColor from "./theme.json";
 
+
+
 export default {
   light: {
     statusBar: {

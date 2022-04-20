@@ -8,6 +8,8 @@ const fontSize = {
 	sm: 13,
 };
 
+
+
 const normal = {
 	light: 'Ubuntu_300Light',
 	regular: 'Ubuntu_400Regular', // default

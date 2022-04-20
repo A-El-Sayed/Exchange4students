@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Image, ImageSourcePropType, ImageProps } from 'react-native';
 
 interface Props extends ImageProps {

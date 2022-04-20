@@ -12,6 +12,7 @@ type ContextProps = {
   fonts?: any;
 };
 
+
 const ThemeContext = React.createContext<ContextProps>({
   theme: "light",
   setTheme: (theme) => console.warn("no theme provider"),
