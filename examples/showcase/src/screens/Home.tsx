@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
-
+import { getItems } from "../services/firebase"
 import { MainStackParamList } from "../types/navigation";
 
 export default function ({
@@ -133,7 +133,11 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Section")}>
+        <TouchableOpacity onPress={async () => { 
+          let products = [];
+          products = await getItems();
+          navigation.navigate("Section",{products:products})
+          }}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Browse Products</Text>
             <Ionicons

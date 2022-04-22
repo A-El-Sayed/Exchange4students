@@ -16,11 +16,13 @@ import { MainStackParamList } from "../types/navigation";
 import { Ionicons } from "@expo/vector-icons";
 import {Searchbar} from "react-native-paper"
 import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets";
+import { getItems } from "../services/firebase";
 
 export default function ({
-  navigation,
+  navigation, route
 }: StackScreenProps<MainStackParamList, "Section">) {
   const { isDarkmode, setTheme } = useTheme();
+  const { products } = route.params;
   return (
     <Layout>
       <TopNav
@@ -62,6 +64,9 @@ export default function ({
                   status="primary"
                   size="md"
                   outline
+                  onPress={() => {
+                    console.log(products);
+                  }}
                 />
                 
               </View>

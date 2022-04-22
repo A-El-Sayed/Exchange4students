@@ -7,7 +7,7 @@ export type MainStackParamList = {
 	Forms: undefined;
 	Typography: undefined;
 	Nice: undefined;
-	Section: undefined;
+	Section: {products: object[]};
 	Avatar: undefined;
 	ViewPage: undefined;
 	ViewCart: undefined;

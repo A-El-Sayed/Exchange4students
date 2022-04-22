@@ -125,6 +125,21 @@ export const getFullName = async () => {
   }
 };
 
+export const getItems = async () => {
+  let products: object[] = []
+  try{
+    const q = query(collection(firestore,"products"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data())
+    })
+  }
+  catch (e) {
+    console.log(e);
+  }
+  return (products);
+};
+
 //TODO - "figure out how to add a picture"
 // export const addPhoto = async () => {
 //     try {
