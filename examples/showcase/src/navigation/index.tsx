@@ -11,8 +11,9 @@ import Avatar from "../screens/Avatar";
 import EnteringScreen from "../screens/EnteringScreen";
 import Register from "../screens/Register";
 import ViewPage from "../screens/ViewPage";
-import ViewCart from "../screens/ViewCart"
-import PostItem from "../screens/PostItem"
+import ViewCart from "../screens/ViewCart";
+import PostItem from "../screens/PostItem";
+import ViewItem from "../screens/ViewItem";
 
 const MainStack = createStackNavigator();
 const Main = () => {
@@ -50,6 +51,7 @@ const Main = () => {
         <MainStack.Screen name="ViewPage" component={ViewPage} />
         <MainStack.Screen name="ViewCart" component={ViewCart} />
         <MainStack.Screen name="PostItem" component={PostItem} />
+        <MainStack.Screen name="ViewItem" component={ViewItem} />
       </MainStack.Navigator>
     </NavigationContainer>
   );

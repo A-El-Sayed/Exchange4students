@@ -92,6 +92,17 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("ViewItem")}>
+          <View style={styles.listItem}>
+            <Text fontWeight="medium">View Item</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={isDarkmode ? themeColor.white : themeColor.black}
+            />
+          </View>
+        </TouchableOpacity>
         {/* <TouchableOpacity onPress={() => navigation.navigate("Buttons")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Buttons</Text>
