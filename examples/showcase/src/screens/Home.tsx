@@ -134,8 +134,7 @@ export default function ({
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={async () => { 
-          let products = [];
-          products = await getItems();
+          let products = await getItems();
           navigation.navigate("Section",{products:products})
           }}>
           <View style={styles.listItem}>
