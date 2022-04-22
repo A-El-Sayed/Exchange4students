@@ -24,15 +24,25 @@ export default function ({
   return (
     <Layout>
       <TopNav
-        leftContent={
+        //leftContent={
+          //<Ionicons
+          //  name="chevron-back"
+          //  size={20}
+           // color={isDarkmode ? themeColor.white : themeColor.black}
+          ///>
+        //}
+        //leftAction={() => navigation.goBack()}
+        middleContent="Browse"
+        rightContent={
           <Ionicons
-            name="chevron-back"
+            name="cart"
             size={20}
-            color={isDarkmode ? themeColor.white : themeColor.black}
+            color={isDarkmode ? themeColor.white100 : themeColor.dark}
           />
         }
-        leftAction={() => navigation.goBack()}
-        middleContent="Browse"
+        rightAction={() => navigation.navigate("ViewCart")
+        }
+
         // rightContent={
         //   <Ionicons
         //     name={isDarkmode ? "sunny" : "moon"}
