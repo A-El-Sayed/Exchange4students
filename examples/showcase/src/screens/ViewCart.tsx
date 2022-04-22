@@ -32,15 +32,15 @@ export default function ({
         }
         leftAction={() => navigation.goBack()}
         middleContent="Cart"
-        rightContent={
-          <Ionicons
-            name="cart"
-            size={20}
-            color={isDarkmode ? themeColor.white100 : themeColor.dark}
-          />
-        }
-        rightAction={() => {
-        }}
+        // rightContent={
+        //   <Ionicons
+        //     name="cart"
+        //     size={20}
+        //     color={isDarkmode ? themeColor.white100 : themeColor.dark}
+        //   />
+        // }
+        // rightAction={() => {
+        // }}
       />
       <ScrollView>
         <Section style={{ marginTop: 20, marginHorizontal: 20 }}>

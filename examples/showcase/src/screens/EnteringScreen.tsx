@@ -112,7 +112,7 @@ export default function ({
               onPressIn={async () => {
                 let result = await logInWithEmail(email, pass);
                 if (result === 'success') {
-                  navigation.navigate("Home");
+                  navigation.navigate("Section"); //rename
                 }
                 else{
                   alert('Incorrect Login info');
