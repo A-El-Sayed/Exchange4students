@@ -17,7 +17,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
-import { logInWithEmail, getFullName } from "../services/firebase";
+import { logInWithEmail, getFullName, getItems } from "../services/firebase";
 import Home from "./Home";
 
 export default function ({
@@ -112,7 +112,8 @@ export default function ({
               onPressIn={async () => {
                 let result = await logInWithEmail(email, pass);
                 if (result === 'success') {
-                  navigation.navigate("Section"); //rename
+                  let products = await getItems();
+                  navigation.navigate("Section",{products:products}); //rename
                 }
                 else{
                   alert('Incorrect Login info');

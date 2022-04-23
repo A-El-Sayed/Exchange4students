@@ -146,6 +146,7 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => navigation.navigate("Avatar")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Profile</Text>
