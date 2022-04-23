@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
-
+import { getItems } from "../services/firebase"
 import { MainStackParamList } from "../types/navigation";
 
 export default function ({
@@ -92,6 +92,17 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("ViewItem")}>
+          <View style={styles.listItem}>
+            <Text fontWeight="medium">View Item</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={isDarkmode ? themeColor.white : themeColor.black}
+            />
+          </View>
+        </TouchableOpacity>
         {/* <TouchableOpacity onPress={() => navigation.navigate("Buttons")}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Buttons</Text>
@@ -122,7 +133,10 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Section")}>
+        <TouchableOpacity onPress={async () => { 
+          let products = await getItems();
+          navigation.navigate("Section",{products:products})
+          }}>
           <View style={styles.listItem}>
             <Text fontWeight="medium">Browse Products</Text>
             <Ionicons
