@@ -118,6 +118,9 @@ export default function ({
                   status="primary"
                   size="md"
                   outline
+                  onPress={() => {
+                    navigation.navigate("ViewItem",{item:item})
+                  }}
                 />
                 
               </View>
