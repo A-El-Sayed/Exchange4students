@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, FlatList } from "react-native";
 import {
   Button,
   Layout,
@@ -60,7 +60,7 @@ export default function ({
         //   }
         // }}
       />
-      <ScrollView>
+      {/* <ScrollView>
         <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
           <SectionImage source={require("../../assets/blue.jpg")} />
           <SectionContent>
@@ -101,7 +101,33 @@ export default function ({
               </View>
           </SectionContent>
         </Section>
-      </ScrollView>
+      </ScrollView> */}
+      <FlatList
+        data={products}
+        renderItem={({ item }) => (
+          <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
+          <SectionImage source={require("../../assets/blue.jpg")} />
+          <SectionContent>
+          <Text fontWeight="medium">{item.item_Name}</Text>
+          <Text> </Text>
+          <Text fontWeight="medium" >${item.Price}</Text>
+          <View style={{ flexDirection: "row" }}>
+                <Button
+                  style={{ marginTop: 20, marginRight: 10 }}
+                  text="Click to learn more"
+                  status="primary"
+                  size="md"
+                  outline
+                  onPress={() => {
+                    navigation.navigate("ViewItem",{item:item})
+                  }}
+                />
+                
+              </View>
+          </SectionContent>
+        </Section>
+        )}
+      />
     </Layout>
   );
 }

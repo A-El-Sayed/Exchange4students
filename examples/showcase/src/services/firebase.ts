@@ -132,6 +132,7 @@ export const getItems = async () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       products.push(doc.data())
+
     })
   }
   catch (e) {

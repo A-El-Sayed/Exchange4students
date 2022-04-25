@@ -12,5 +12,5 @@ export type MainStackParamList = {
 	ViewPage: undefined;
 	ViewCart: undefined;
 	PostItem: undefined;
-	ViewItem: undefined;
+	ViewItem: {item: object};
 };
