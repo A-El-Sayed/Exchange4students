@@ -64,7 +64,8 @@ export default function ({
                 justifyContent: "space-evenly",
               }}
             >
-              <Text style={{fontSize:25}}>route.p</Text>
+              <Text style={{ fontSize: 25 }}>route.p</Text>
+                // change rout.p to username
               <Profile source={require("../../assets/people.jpg")} size="xl" />
             </View>
             <Text style={{marginTop:20 ,marginBottom:10, textAlign:"center", fontSize:13}}>Student at Stevens Institute of Technology</Text>
