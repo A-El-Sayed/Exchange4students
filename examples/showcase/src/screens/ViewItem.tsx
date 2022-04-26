@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
   Layout,
   TopNav,
@@ -10,6 +10,7 @@ import {
   RadioButton,
   themeColor,
   SectionContent,
+  SectionImage,
   Section,
   useTheme,
   Button
@@ -42,26 +43,23 @@ export default function ({
       />
       <ScrollView>
       <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
-          <SectionContent>
-          <View style={{ marginBottom: 20}}>
-              <Text style={{ marginBottom: 10 }}>
-                Name of Item: {item.item_Name}
-              </Text>
-            </View>
-            <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
+         <Text fontWeight = 'medium' style={styles.label}>{item.item_Name}</Text>
+         <SectionImage source={require("../../assets/blue.jpg")} />
+         <SectionContent>
+            <View /*style={{ marginBottom: 20 }}*/>
+              <Text style={styles.item}>
                   Category: {item.Category}
               </Text>
 
             </View>
-            <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
+            <View /*style={{ marginBottom: 20 }}*/>
+              <Text style={styles.item}>
                   Description: {item.Description}
               </Text>
 
             </View>
-            <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
+            <View /*style={{ marginBottom: 20 }}*/>
+              <Text style={styles.item}>
                   Price: ${item.Price}
               </Text>
 
@@ -72,3 +70,26 @@ export default function ({
     </Layout>
   );
 }
+
+const styles =StyleSheet.create({
+    listItem: {
+        marginHorizontal: 20,
+        marginTop: 20,
+        padding: 20,
+        backgroundColor: "white",
+        borderRadius: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    label: {
+        textAlign: "center",
+        fontSize: 20,
+        marginBottom: 20,
+        marginTop: 20,
+    },
+    item: {
+        marginBottom: 20,
+        marginTop: 20,
+    }
+});
