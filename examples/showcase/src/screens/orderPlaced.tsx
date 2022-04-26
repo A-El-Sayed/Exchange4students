@@ -18,7 +18,7 @@ import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/s
 
 export default function ({
   navigation,
-}: StackScreenProps<MainStackParamList, "ViewCart">) {
+}: StackScreenProps<MainStackParamList, "orderPlace">) {
   const { isDarkmode, setTheme } = useTheme();
   return (
     <Layout>
@@ -30,8 +30,8 @@ export default function ({
             color={isDarkmode ? themeColor.white : themeColor.black}
           />
         }
-        leftAction={() => navigation.goBack()}
-        middleContent="Cart"
+        leftAction={() => navigation.navigate("Home")}
+        middleContent="Order Placed"
         // rightContent={
         //   <Ionicons
         //     name="cart"
@@ -43,35 +43,16 @@ export default function ({
         // }}
       />
       <ScrollView>
-        <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
-          <SectionImage source={require("../../assets/blue.jpg")} />
+        <Section >
+          <SectionImage source={require("../../assets/checkmark.jpg")} />
           <SectionContent>
-          <Text fontWeight="medium">Data Structures and Algorithm</Text>
+  
           <Text> </Text>
-          <Text fontWeight="medium" >$15.99</Text>
-          <View style={{ flexDirection: "row" }}>
-                <Button
-                  style={{ marginTop: 20, marginRight: 10 }}
-                  text="Click to learn more"
-                  status="primary"
-                  size="md"
-                  outline
-                />
-                
-              </View>
+          <Text fontWeight="medium" >Thank you for placing your order! You should recieve a confirmation email shortly.</Text>
+ 
           </SectionContent>
         </Section>
 
-        <Button
-                  style={{ marginTop: 20, marginRight: 10 }}
-                  text="Check  Out"
-                  status="primary"
-                  size="md"
-                  outline
-                  onPress={() => {
-                    navigation.navigate("Checkout")
-                  }}
-                />
 
     
       </ScrollView>

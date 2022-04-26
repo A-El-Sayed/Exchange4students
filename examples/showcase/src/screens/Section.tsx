@@ -122,6 +122,17 @@ export default function ({
                     navigation.navigate("ViewItem",{item:item})
                   }}
                 />
+
+                <Button
+                  style={{ marginTop: 20, marginRight: 10 }}
+                  text="Add to Cart"
+                  status="primary"
+                  size="md"
+                  outline
+                  onPress={() => {
+                    navigation.navigate("ViewCart")
+                  }}
+                />
                 
               </View>
           </SectionContent>

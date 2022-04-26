@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import {
   Layout,
   TopNav,
@@ -10,7 +10,6 @@ import {
   RadioButton,
   themeColor,
   SectionContent,
-  SectionImage,
   Section,
   useTheme,
   Button
@@ -43,25 +42,39 @@ export default function ({
       />
       <ScrollView>
       <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
-         <Text fontWeight = 'medium' style={styles.label}>{item.item_Name}</Text>
-         <SectionImage source={require("../../assets/blue.jpg")} />
-         <SectionContent>
-            <View /*style={{ marginBottom: 20 }}*/>
-              <Text style={styles.item}>
+          <SectionContent>
+          <View style={{ marginBottom: 20}}>
+              <Text style={{ marginBottom: 10 }}>
+                Name of Item: {item.item_Name}
+              </Text>
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>
                   Category: {item.Category}
               </Text>
 
             </View>
-            <View /*style={{ marginBottom: 20 }}*/>
-              <Text style={styles.item}>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>
                   Description: {item.Description}
               </Text>
 
             </View>
-            <View /*style={{ marginBottom: 20 }}*/>
-              <Text style={styles.item}>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>
                   Price: ${item.Price}
               </Text>
+
+              <Button
+                  style={{ marginTop: 20, marginRight: 10 }}
+                  text="Add to Cart"
+                  status="primary"
+                  size="md"
+                  outline
+                  onPress={() => {
+                    navigation.navigate("ViewCart")
+                  }}
+                />
 
             </View>
         </SectionContent>
@@ -70,26 +83,3 @@ export default function ({
     </Layout>
   );
 }
-
-const styles =StyleSheet.create({
-    listItem: {
-        marginHorizontal: 20,
-        marginTop: 20,
-        padding: 20,
-        backgroundColor: "white",
-        borderRadius: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    label: {
-        textAlign: "center",
-        fontSize: 20,
-        marginBottom: 20,
-        marginTop: 20,
-    },
-    item: {
-        marginBottom: 20,
-        marginTop: 20,
-    }
-});
