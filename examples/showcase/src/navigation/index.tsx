@@ -14,6 +14,9 @@ import ViewPage from "../screens/ViewPage";
 import ViewCart from "../screens/ViewCart";
 import PostItem from "../screens/PostItem";
 import ViewItem from "../screens/ViewItem";
+import Checkout from "../screens/Checkout";
+import orderPlace from "../screens/orderPlace";
+
 
 const MainStack = createStackNavigator();
 const Main = () => {
