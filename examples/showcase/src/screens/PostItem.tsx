@@ -12,7 +12,7 @@ import {
   SectionContent,
   Section,
   useTheme,
-  Button
+  Button,
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
@@ -29,12 +29,11 @@ export default function ({
   const [value, setValue] = React.useState<string | null>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [RadioToggle, setRadioToggle] = React.useState<boolean>(false);
-  const [itemName,setName] = React.useState<string>("")
-  const [Price,setPrice] = React.useState<string>("")
-  const [Category,setCategory] = React.useState<string>("")
+  const [itemName, setName] = React.useState<string>("");
+  const [Price, setPrice] = React.useState<string>("");
+  const [Category, setCategory] = React.useState<string>("");
   const [Description, setDescription] = React.useState<string>("");
   // const [photo, setPhoto] = React.useState([]) is for pictures used either for the profile or when posting an item, but thats for another time lol.
-
 
   return (
     <Layout>
@@ -50,12 +49,10 @@ export default function ({
         middleContent="Post Item"
       />
       <ScrollView>
-      <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
+        <Section style={{ marginHorizontal: 20, marginTop: 20 }}>
           <SectionContent>
-          <View style={{ marginBottom: 20}}>
-              <Text style={{ marginBottom: 10 }}>
-                Name of Item
-              </Text>
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ marginBottom: 10 }}>Name of Item</Text>
 
               <TextInput
                 placeholder="Enter the name of the item"
@@ -67,45 +64,31 @@ export default function ({
               />
             </View>
             <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
-                  Category:
-              </Text>
+              <Text style={{ marginBottom: 10 }}>Category:</Text>
 
               <TextInput
                 placeholder="Enter the category of the item"
                 value={Category}
                 onChangeText={(val) => setCategory(val)}
                 rightContent={
-                  <Ionicons
-                    name="text"
-                    size={20}
-                    color={themeColor.gray300}
-                  />
+                  <Ionicons name="text" size={20} color={themeColor.gray300} />
                 }
               />
             </View>
             <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
-                  Description:
-              </Text>
+              <Text style={{ marginBottom: 10 }}>Description:</Text>
 
               <TextInput
                 placeholder="Enter the description of the item"
                 value={Description}
                 onChangeText={(val) => setDescription(val)}
                 rightContent={
-                  <Ionicons
-                    name="text"
-                    size={20}
-                    color={themeColor.gray300}
-                  />
+                  <Ionicons name="text" size={20} color={themeColor.gray300} />
                 }
               />
             </View>
             <View style={{ marginBottom: 20 }}>
-              <Text style={{ marginBottom: 10 }}>
-                  Price:
-              </Text>
+              <Text style={{ marginBottom: 10 }}>Price:</Text>
 
               <TextInput
                 placeholder="Enter the price"
@@ -129,22 +112,33 @@ export default function ({
                   size={20}
                   color={themeColor.white}
                 />
-                
               }
               status="primary"
               type="TouchableOpacity"
               // onPress={() => navigation.navigate("Home")}
               onPressIn={async () => {
-                let result = await addProduct(itemName, Category,Description,Price);
-                if (result === 'success') {
-                  navigation.navigate("Home");
-                  
-              } } 
-            }
+                if (
+                  itemName == "" ||
+                  Category == "" ||
+                  Description == "" ||
+                  Price == ""
+                ) {
+                  alert("Fill empty inputs boxes before posting!");
+                } else {
+                  let result = await addProduct(
+                    itemName,
+                    Category,
+                    Description,
+                    Price
+                  );
+                  if (result === "success") {
+                    navigation.navigate("Home");
+                  }
+                }
+              }}
             />
           </SectionContent>
         </Section>
-        
       </ScrollView>
     </Layout>
   );
