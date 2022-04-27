@@ -63,6 +63,17 @@ export default function ({
                   Price: ${item.Price}
               </Text>
 
+              <Button
+                  style={{ marginTop: 20, marginRight: 10 }}
+                  text="Add to Cart"
+                  status="primary"
+                  size="md"
+                  outline
+                  onPress={() => {
+                    navigation.navigate("ViewCart")
+                  }}
+                />
+
             </View>
         </SectionContent>
         </Section>

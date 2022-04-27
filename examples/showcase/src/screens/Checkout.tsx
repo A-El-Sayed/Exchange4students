@@ -18,7 +18,7 @@ import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/s
 
 export default function ({
   navigation,
-}: StackScreenProps<MainStackParamList, "ViewCart">) {
+}: StackScreenProps<MainStackParamList, "Checkout">) {
   const { isDarkmode, setTheme } = useTheme();
   return (
     <Layout>
@@ -31,7 +31,7 @@ export default function ({
           />
         }
         leftAction={() => navigation.goBack()}
-        middleContent="Cart"
+        middleContent="Checkout"
         // rightContent={
         //   <Ionicons
         //     name="cart"
@@ -57,6 +57,8 @@ export default function ({
                   size="md"
                   outline
                 />
+
+                
                 
               </View>
           </SectionContent>
@@ -64,12 +66,12 @@ export default function ({
 
         <Button
                   style={{ marginTop: 20, marginRight: 10 }}
-                  text="Check  Out"
+                  text="Place Order"
                   status="primary"
                   size="md"
                   outline
                   onPress={() => {
-                    navigation.navigate("Checkout")
+                    navigation.navigate("orderPlace")
                   }}
                 />
 
