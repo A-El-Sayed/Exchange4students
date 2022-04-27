@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
-import { getItems } from "../services/firebase"
+import { getCart, getItems } from "../services/firebase"
 import { MainStackParamList } from "../types/navigation";
 
 export default function ({
@@ -123,6 +123,20 @@ export default function ({
             />
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={async () => {
+          await getCart()
+        } }>
+          <View style={styles.listItem}>
+            <Text fontWeight="medium">Test Cart</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={isDarkmode ? themeColor.white : themeColor.black}
+            />
+          </View>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={async () => { 
           let products = await getItems();
           navigation.navigate("Section",{products:products})

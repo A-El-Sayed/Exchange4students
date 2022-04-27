@@ -13,6 +13,8 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
+  doc,
 } from "firebase/firestore";
 import Constants from "expo-constants";
 
@@ -131,7 +133,9 @@ export const getItems = async () => {
     const q = query(collection(firestore,"products"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      products.push(doc.data())
+      let data = doc.data()
+      data["id"] = doc.id;
+      products.push(data)
 
     })
   }
@@ -139,6 +143,38 @@ export const getItems = async () => {
     console.log(e);
   }
   return (products);
+};
+
+export const getCart = async () => {
+  let itemsInCart: string[] = [];
+  let current_document = 0;
+  try{
+    const q = query(collection(firestore,"carts"));
+    const querySnapshot1 = await getDocs(q);
+    querySnapshot1.forEach((document) => {
+      itemsInCart.push(document.data().products[current_document])
+      current_document += 1;
+      // let temp = document.data().products[0].path
+      // console.log(temp)
+    })
+    // itemsInCart.forEach((item) => {
+    //   const docRef = doc(firestore,"products",item)
+    //   const wanted_doc = getDoc(docRef)
+    //   console.log("test1")
+    //   console.log(wanted_doc)
+    // })
+    const n = query(collection(firestore,"products"));
+    const querySnapshot2 = await getDocs(n);
+    querySnapshot2.forEach((doc) => {
+      if (itemsInCart.includes(doc.id)) {
+        console.log(doc.data())
+      }
+    })
+      
+  }
+  catch (e) {
+    console.log(e);
+  }
 };
 
 //TODO - "figure out how to add a picture"
