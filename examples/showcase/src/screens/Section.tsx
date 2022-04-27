@@ -14,15 +14,17 @@ import {
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../types/navigation";
 import { Ionicons } from "@expo/vector-icons";
-import {Searchbar} from "react-native-paper"
+import {Searchbar} from "react-native-paper";
 import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets";
 import { getItems } from "../services/firebase";
+import { Search } from "../rapi/components/searchBar";
 
 export default function ({
   navigation, route
 }: StackScreenProps<MainStackParamList, "Section">) {
   const { isDarkmode, setTheme } = useTheme();
   const { products } = route.params;
+
   return (
     <Layout>
       <TopNav
@@ -34,7 +36,22 @@ export default function ({
           />
         }
         leftAction={() => navigation.navigate("Home")}
-        middleContent="Browse"
+
+       /* middleContent="Browse"
+
+       middleContent={
+         <Searchbar
+         placeholder="Search"
+         onChangeText={onChangeSearch}
+         value = {searchQuery}
+         />
+       }*/
+
+       middleContent={
+         <Search />
+         }
+
+  
         rightContent={
           <Ionicons
             name="cart"
@@ -60,7 +77,7 @@ export default function ({
         //   }
         // }}
       />
-      {/* <ScrollView>
+     /* {/* <ScrollView>
         <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
           <SectionImage source={require("../../assets/blue.jpg")} />
           <SectionContent>
