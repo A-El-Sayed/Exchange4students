@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, FlatList } from "react-native";
 import {
   Button,
   Layout,
@@ -17,9 +17,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets";
 
 export default function ({
-  navigation,
+  navigation, route
 }: StackScreenProps<MainStackParamList, "ViewCart">) {
   const { isDarkmode, setTheme } = useTheme();
+  const { cart } = route.params;
   return (
     <Layout>
       <TopNav
@@ -42,13 +43,15 @@ export default function ({
         // rightAction={() => {
         // }}
       />
-      <ScrollView>
-        <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
+      <FlatList
+        data={cart}
+        renderItem={({ item }) => (
+          <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
           <SectionImage source={require("../../assets/blue.jpg")} />
           <SectionContent>
-          <Text fontWeight="medium">Data Structures and Algorithm</Text>
+          <Text fontWeight="medium">{item.item_Name}</Text>
           <Text> </Text>
-          <Text fontWeight="medium" >$15.99</Text>
+          <Text fontWeight="medium" >${item.Price}</Text>
           <View style={{ flexDirection: "row" }}>
                 <Button
                   style={{ marginTop: 20, marginRight: 10 }}
@@ -56,14 +59,16 @@ export default function ({
                   status="primary"
                   size="md"
                   outline
+                  onPress={() => {
+                    navigation.navigate("ViewItem",{item:item})
+                  }}
                 />
                 
               </View>
           </SectionContent>
         </Section>
-
-    
-      </ScrollView>
+        )}
+      />
     </Layout>
   );
 }

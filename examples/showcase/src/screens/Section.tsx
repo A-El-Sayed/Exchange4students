@@ -16,7 +16,7 @@ import { MainStackParamList } from "../types/navigation";
 import { Ionicons } from "@expo/vector-icons";
 import {Searchbar} from "react-native-paper"
 import { ScaleFromCenterAndroid } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets";
-import { getItems } from "../services/firebase";
+import { getItems, getCart } from "../services/firebase";
 
 export default function ({
   navigation, route
@@ -42,8 +42,10 @@ export default function ({
             color={isDarkmode ? themeColor.white100 : themeColor.dark}
           />
         }
-        rightAction={() => navigation.navigate("ViewCart")
-        }
+        rightAction={async() => {
+          let cart = await getCart();
+          navigation.navigate("ViewCart",{cart:cart})
+        }}
 
         // rightContent={
         //   <Ionicons

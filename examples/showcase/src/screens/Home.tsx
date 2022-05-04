@@ -82,7 +82,10 @@ export default function ({
             />
           </View>
         </TouchableOpacity> */}
-        <TouchableOpacity onPress={() => navigation.navigate("ViewCart")}>
+        <TouchableOpacity onPress={async() => {
+          let cart = await getCart();
+          navigation.navigate("ViewCart",{cart:cart});
+        } }>
           <View style={styles.listItem}>
             <Text fontWeight="medium">View Cart</Text>
             <Ionicons
@@ -124,21 +127,10 @@ export default function ({
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={async () => {
-          await getCart()
-        } }>
-          <View style={styles.listItem}>
-            <Text fontWeight="medium">Test Cart</Text>
-            <Ionicons
-              name="chevron-forward"
-              size={20}
-              color={isDarkmode ? themeColor.white : themeColor.black}
-            />
-          </View>
-        </TouchableOpacity>
 
         <TouchableOpacity onPress={async () => { 
           let products = await getItems();
+          let cart = await getCart();
           navigation.navigate("Section",{products:products})
           }}>
           <View style={styles.listItem}>
