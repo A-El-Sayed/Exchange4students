@@ -42,25 +42,7 @@ export default function ({
         // rightAction={() => {
         // }}
       />
-      <ScrollView>
-        <Section style={{ marginTop: 20, marginHorizontal: 20 }}>
-          <SectionImage source={require("../../assets/blue.jpg")} />
-          <SectionContent>
-          <Text fontWeight="medium">Data Structures and Algorithm</Text>
-          <Text> </Text>
-          <Text fontWeight="medium" >$15.99</Text>
-          <View style={{ flexDirection: "row" }}>
-                <Button
-                  style={{ marginTop: 20, marginRight: 10 }}
-                  text="Click to learn more"
-                  status="primary"
-                  size="md"
-                  outline
-                />
-                
-              </View>
-          </SectionContent>
-        </Section>
+      
 
         <Button
                   style={{ marginTop: 20, marginRight: 10 }}
@@ -74,7 +56,6 @@ export default function ({
                 />
 
     
-      </ScrollView>
     </Layout>
   );
 }
