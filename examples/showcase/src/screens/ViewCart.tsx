@@ -69,6 +69,16 @@ export default function ({
         </Section>
         )}
       />
+      <Button
+                  style={{ marginTop: 20, marginRight: 10 }}
+                  text="Check  Out"
+                  status="primary"
+                  size="md"
+                  outline
+                  onPress={() => {
+                    navigation.navigate("Checkout")
+                  }}
+                />
     </Layout>
   );
 }
