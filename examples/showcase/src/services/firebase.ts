@@ -13,8 +13,12 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
+  doc,
+  updateDoc
 } from "firebase/firestore";
 import Constants from "expo-constants";
+import { update } from "react-spring";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -131,7 +135,9 @@ export const getItems = async () => {
     const q = query(collection(firestore,"products"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      products.push(doc.data())
+      let data = doc.data()
+      data["id"] = doc.id;
+      products.push(data)
 
     })
   }
@@ -139,6 +145,53 @@ export const getItems = async () => {
     console.log(e);
   }
   return (products);
+};
+
+// export const addToCart = async(itemID:string, currentCart:string[]) => {
+//   try{
+//     currentCart.push(itemID)
+//     const docRef = await updateDoc(doc())
+//   }
+//   catch{
+
+//   }
+// }
+
+
+export const getCart = async () => {
+  let idsInCart: string[] = [];
+  let current_document = 0;
+  let itemsInCart: object[] = [];
+  try{
+    const q = query(collection(firestore,"carts"));
+    const querySnapshot1 = await getDocs(q);
+    querySnapshot1.forEach((document) => {
+      while (current_document < (document.data().products.length)){
+        idsInCart.push(document.data().products[current_document])
+        current_document += 1
+      }
+      // let temp = document.data().products[0].path
+      // console.log(temp)
+    })
+    // itemsInCart.forEach((item) => {
+    //   const docRef = doc(firestore,"products",item)
+    //   const wanted_doc = getDoc(docRef)
+    //   console.log("test1")
+    //   console.log(wanted_doc)
+    // })
+    const n = query(collection(firestore,"products"));
+    const querySnapshot2 = await getDocs(n);
+    querySnapshot2.forEach((doc) => {
+      if (idsInCart.includes(doc.id)) {
+        itemsInCart.push(doc.data())
+      }
+    })
+      
+  }
+  catch (e) {
+    console.log(e);
+  }
+  return itemsInCart;
 };
 
 //TODO - "figure out how to add a picture"

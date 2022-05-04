@@ -10,7 +10,7 @@ export type MainStackParamList = {
 	Section: {products: object[]};
 	Avatar: undefined;
 	ViewPage: undefined;
-	ViewCart: undefined;
+	ViewCart: {cart: object[]};
 	PostItem: undefined;
 	ViewItem: {item: object};
 };

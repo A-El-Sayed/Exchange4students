@@ -58,8 +58,10 @@ export default function ({
             color={isDarkmode ? themeColor.white100 : themeColor.dark}
           />
         }
-        rightAction={() => navigation.navigate("ViewCart")
-        }
+        rightAction={async() => {
+          let cart = await getCart();
+          navigation.navigate("ViewCart",{cart:cart})
+        }}
 
         // rightContent={
         //   <Ionicons
